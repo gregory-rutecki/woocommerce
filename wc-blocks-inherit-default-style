@@ -1,0 +1,25 @@
+/**
+ * 
+ *  Snippet - Apply default woocommerce styles to woocommerce blocks
+ *  v 1.0
+ * 
+ * Usage: Add to functions.php
+ * Dependency: Woocommerce
+ * Description: Woocommerce blocks does not have "woocommerce" class in the grid element and also does not have "products" class in UL element.
+ * The code will add these classes to woocommerce blocks.
+ */
+ 
+ 
+function style_wc_blocks(){
+	echo '
+	<style> li.inherit-wc-style{visibility:visible!important;} </style>
+	<script type="application/javascript" defer>
+	jQuery(document).ready(function ($) {
+		$(".wc-block-grid").addClass("woocommerce");
+		 $(".wc-block-grid__products").addClass("products");
+		 $(".wc-block-grid .wc-block-grid__products li.product").addClass("inherit-wc-style");
+});
+	 </script>
+	';
+}
+add_action('wp_footer','style_wc_blocks', 20);
